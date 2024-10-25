@@ -9,7 +9,7 @@ export default function Users() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/api/v1/user/bulk?filter=${filter}`, {
+      .get(`${import.meta.env.BACKEND_URL}/api/v1/user/bulk?filter=${filter}`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
