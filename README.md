@@ -35,8 +35,8 @@ QuickPay is a Full-Stack application that allows users to perform secure transac
   - [Axios](https://axios-http.com/) - for HTTP requests
 
 - **Deployment**:
-  - [Render](https://render.com/) - for backend deployment
   - [Vercel](https://vercel.com/) - for frontend deployment
+  - [Render](https://render.com/) - for backend deployment
   
 ## Visual Overview
 
