@@ -42,9 +42,9 @@ export default function SendMoney() {
                 />
               </div>
               <button
-                onClick={() => {
-                  axios.post(
-                    `${import.meta.env.BACKEND_URL}/api/v1/account/transfer`,
+                onClick={async () => {
+                  await axios.post(
+                    `${import.meta.env.VITE_BACKEND_URL}/api/v1/account/transfer`,
                     {
                       to: id,
                       amount,
