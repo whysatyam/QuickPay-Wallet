@@ -1,4 +1,5 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
+import Loader from "../components/Loader";
 import { useState } from "react";
 import axios from "axios";
 
@@ -6,7 +7,10 @@ export default function SendMoney() {
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
   const name = searchParams.get("name");
+
   const [amount, setAmount] = useState(0);
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   return (
@@ -43,6 +47,7 @@ export default function SendMoney() {
               </div>
               <button
                 onClick={async () => {
+                  setLoading(true);
                   await axios.post(
                     `${import.meta.env.VITE_BACKEND_URL}/api/v1/account/transfer`,
                     {
@@ -57,10 +62,12 @@ export default function SendMoney() {
                     }
                   );
                   navigate("/dashboard");
+                  setLoading(false);
                 }}
                 className="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white"
+                disabled={loading}
               >
-                Initiate Transfer
+                {loading ? <Loader /> : "Initiate Transfer"}
               </button>
             </div>
           </div>

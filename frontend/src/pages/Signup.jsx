@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import Logo from "../components/Logo";
 import Button from "../components/Button";
+import Loader from "../components/Loader";
 import Heading from "../components/Heading";
 import InputBox from "../components/InputBox";
 import SubHeading from "../components/SubHeading";
@@ -14,6 +15,7 @@ export default function Signup() {
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -48,6 +50,7 @@ export default function Signup() {
           <div className="pt-4">
             <Button
               onClick={async () => {
+                setLoading(true);
                 const response = await axios.post(
                   `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/signup`,
                   {
@@ -59,8 +62,11 @@ export default function Signup() {
                 );
                 localStorage.setItem("token", response.data.token);
                 navigate("/dashboard");
+                setLoading(false);
               }}
-              label={"Sign up"}
+              label={loading ? <Loader /> : "Sign up"}
+              loading={loading} 
+              disabled={loading}
             />
           </div>
           <BottomWarning

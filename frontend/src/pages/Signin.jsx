@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Logo from "../components/Logo";
+import Loader from "../components/Loader";
 import Button from "../components/Button";
 import Heading from "../components/Heading";
 import InputBox from "../components/InputBox";
@@ -13,6 +14,7 @@ export default function Signin() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   return (
     <div className="bg-slate-300 h-screen flex justify-center">
@@ -36,6 +38,7 @@ export default function Signin() {
           <div className="pt-4">
             <Button
               onClick={async () => {
+                setLoading(true);
                 const res = await axios.post(
                   `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/signin`,
                   {
@@ -49,8 +52,11 @@ export default function Signin() {
                 } else {
                   alert("Invalid credentials/Error while logging in");
                 }
+                setLoading(false);
               }}
-              label={"Sign in"}
+              label={loading ? <Loader /> : "Sign in"}
+              loading={loading} 
+              disabled={loading}
             />
           </div>
           <BottomWarning
