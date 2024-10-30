@@ -1,21 +1,28 @@
 import axios from "axios";
 import Button from "./Button";
+import UserSkeleton from "./UserSkeleton";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Users() {
   const [users, setUsers] = useState([]);
   const [filter, setFilter] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/api/v1/user/bulk?filter=${filter}`, {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      })
+      .get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/user/bulk?filter=${filter}`,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+      )
       .then((response) => {
         setUsers(response.data.user);
+        setLoading(false);
       });
   }, [filter]);
 
@@ -33,9 +40,12 @@ export default function Users() {
         />
       </div>
       <div>
-        {users.map((user, index) => (
-          <User key={index} user={user} />
-        ))}
+        {loading
+          ? 
+            Array.from({ length: 5 }).map((_, index) => (
+              <UserSkeleton key={index} />
+            ))
+          : users.map((user, index) => <User key={index} user={user} />)}
       </div>
     </>
   );
