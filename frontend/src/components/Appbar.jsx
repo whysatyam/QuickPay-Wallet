@@ -10,7 +10,7 @@ export default function Appbar () {
         <AppbarLogo />
       </div>
       <div className="flex">
-        <div className="flex flex-col justify-center h-full mr-4">
+        <div className="hidden md:flex flex-col justify-center h-full mr-4">
           Welcome User
         </div>
         <div className="rounded-full h-12 w-12 bg-slate-300 flex justify-center mt-1 mr-2">

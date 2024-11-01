@@ -42,7 +42,7 @@ export default function Users() {
       <div>
         {loading
           ? 
-            Array.from({ length: 5 }).map((_, index) => (
+            Array.from({ length: 7 }).map((_, index) => (
               <UserSkeleton key={index} />
             ))
           : users.map((user, index) => <User key={index} user={user} />)}
