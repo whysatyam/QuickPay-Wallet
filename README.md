@@ -11,31 +11,31 @@ QuickPay is a Full-Stack application that allows users to perform secure transac
 
 ## Technologies Used
 
-- **Frontend**:  
-  - React - For user interface  
-  - Tailwind CSS - For styling
+### Frontend:
+- React - For user interface
+- Tailwind CSS - For styling
 
-- **Backend**:  
-  - Node.js - Server environment  
-  - Express - Backend framework
+### Backend:  
+- Node.js - Server environment  
+- Express - Backend framework
 
-- **Database**:  
-  - MongoDB - NoSQL database  
-  - Mongoose - Object modeling
+### Database:  
+- MongoDB - NoSQL database  
+- Mongoose - Object modeling
 
-- **Security**:  
-  - Bcrypt - Password hashing  
-  - JWT - Authorization and authentication
+### Security:  
+- Bcrypt - Password hashing  
+- JWT - Authorization and authentication
 
-- **Data Validation**:  
-  - Zod - Schema-based validation
+### Data Validation:  
+- Zod - Schema-based validation
 
-- **Data Fetching**:  
-  - Axios - HTTP requests
+### Data Fetching:  
+- Axios - HTTP requests
 
-- **Deployment**:  
-  - Vercel - Frontend deployment  
-  - Render - Backend deployment
+### Deployment:  
+- Vercel - Frontend deployment  
+- Render - Backend deployment
 
 ## Visual Overview
 
