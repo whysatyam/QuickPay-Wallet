@@ -3,6 +3,8 @@ import Loader from "../components/Loader";
 import { useState } from "react";
 import axios from "axios";
 
+import { toast } from "react-hot-toast";
+
 export default function SendMoney() {
   const [searchParams] = useSearchParams();
   const id = searchParams.get("id");
@@ -61,6 +63,7 @@ export default function SendMoney() {
                       },
                     }
                   );
+                  toast.success("Money transferred successfully");
                   navigate("/dashboard");
                   setLoading(false);
                 }}

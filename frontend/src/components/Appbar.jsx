@@ -2,6 +2,8 @@ import Button from "./Button";
 import AppbarLogo from './AppbarLogo'
 import { useNavigate } from "react-router-dom";
 
+import { toast } from "react-hot-toast";
+
 export default function Appbar () {
   const navigate = useNavigate();
   return (
@@ -20,6 +22,7 @@ export default function Appbar () {
           <Button
             onClick={() => {
               localStorage.removeItem("token");
+              toast.success("Logged out successfully");
               navigate("/signin");
             }}
             label={"Signout"}

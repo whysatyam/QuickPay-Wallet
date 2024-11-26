@@ -14,6 +14,7 @@ QuickPay is a Full-Stack application that allows users to perform secure transac
 ### Frontend:
 - React - For user interface
 - Tailwind CSS - For styling
+- React Hot Toast - For notifications
 
 ### Backend:  
 - Node.js - Server environment  

@@ -10,6 +10,8 @@ import InputBox from "../components/InputBox";
 import SubHeading from "../components/SubHeading";
 import BottomWarning from "../components/BottomWarning";
 
+import { toast } from "react-hot-toast";
+
 export default function Signup() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -29,22 +31,22 @@ export default function Signup() {
           <SubHeading label={"Enter your information to create an account"} />
           <InputBox
             onChange={(e) => setFirstName(e.target.value)}
-            placeholder="Enter First Name"
+            placeholder="your first name"
             label={"First Name"}
           />
           <InputBox
             onChange={(e) => setLastName(e.target.value)}
-            placeholder="Enter Last Name"
+            placeholder="your last name"
             label={"Last Name"}
           />
           <InputBox
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter Your Email"
+            placeholder="you@example.com"
             label={"Email"}
           />
           <InputBox
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Some Strong Password"
+            placeholder="some strong password"
             label={"Password"}
           />
           <div className="pt-4">
@@ -61,6 +63,7 @@ export default function Signup() {
                   }
                 );
                 localStorage.setItem("token", response.data.token);
+                toast.success("Account created successfully");
                 navigate("/dashboard");
                 setLoading(false);
               }}

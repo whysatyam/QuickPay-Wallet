@@ -10,6 +10,8 @@ import InputBox from "../components/InputBox";
 import SubHeading from "../components/SubHeading";
 import BottomWarning from "../components/BottomWarning";
 
+import { toast } from "react-hot-toast";
+
 export default function Signin() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
@@ -27,12 +29,12 @@ export default function Signin() {
           <SubHeading label={"Enter your credentials to access your account"} />
           <InputBox
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter Your Email"
+            placeholder="you@example.com"
             label={"Email"}
           />
           <InputBox
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter Your Password"
+            placeholder="enter your password"
             label={"Password"}
           />
           <div className="pt-4">
@@ -48,11 +50,12 @@ export default function Signin() {
                 );
                 if (res.data.token) {
                   localStorage.setItem("token", res.data.token);
+                  toast.success("Logged in successfully");
                   navigate("/dashboard");
                 } else {
-                  alert("Invalid credentials/Error while logging in");
+                  toast.error("Invalid credentials");
                 }
-                setLoading(false);
+                setLoading(false)
               }}
               label={loading ? <Loader /> : "Sign in"}
               loading={loading} 
